@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#8B6914" />
+    <meta name="description" content="幼小衔接国学启蒙学习程序 - 帮助4-8岁小朋友学习国学经典" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="国学小书房" />
+    <title>国学小书房 - 幼小衔接国学启蒙</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: linear-gradient(135deg, #8B6914 0%, #5C3A1E 100%);
+        font-family: 'KaiTi', 'STKaiti', 'SimSun', 'STSong', serif;
+      }
+      #game-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+      /* canvas 由 Phaser 创建，用 position:absolute + inset:0 + margin:auto 精确居中
+         不用 transform:translate(-50%,-50%)，避免子像素渲染导致点击偏移 */
+      #game-container canvas {
+        display: block;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        margin: auto !important;
+      }
+      /* 加载提示（Phaser 初始化前显示） */
+      #loading {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #F5E6C8;
+        font-size: 24px;
+        text-align: center;
+        z-index: 100;
+        font-family: 'KaiTi', 'STKaiti', serif;
+      }
+      #loading .spinner {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto 16px;
+        border: 4px solid rgba(245,230,200,0.3);
+        border-top-color: #F5E6C8;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+  </head>
+  <body>
+    <div id="game-container">
+      <div id="loading">
+        <div class="spinner"></div>
+        <div>国学小书房加载中...</div>
+      </div>
+    </div>
+    <script type="module" src="/src/game/standalone.ts"></script>
+  </body>
+</html>
